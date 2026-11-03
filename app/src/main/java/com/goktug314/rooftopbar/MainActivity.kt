@@ -510,7 +510,7 @@ private fun GameScreen(
                     }
                     Spacer(Modifier.width(12.dp))
                     Column(Modifier.weight(1f)) {
-                        Text("${guest.name.toUpperCase()} · ${guest.table.toUpperCase()}", color = Gold, fontSize = 9.sp, fontWeight = FontWeight.ExtraBold, letterSpacing = 1.sp)
+                       Text("${guest.name.uppercase()} · ${guest.table.uppercase()}", color = Gold, fontSize = 9.sp, fontWeight = FontWeight.ExtraBold, letterSpacing = 1.sp)
                         Spacer(Modifier.height(4.dp))
                         Text("“Could I get a ${order.name}, please?”", color = Ink, fontSize = 16.sp, fontWeight = FontWeight.Bold, lineHeight = 21.sp)
                         Text(if (order.type == MenuType.Drink) "SIGNATURE DRINK" else "FROM THE KITCHEN", color = Muted, fontSize = 8.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.2.sp, modifier = Modifier.padding(top = 5.dp))
