@@ -289,37 +289,8 @@ private fun CitySkyline() {
                 }
             }
         }
-        // Open-air rooftop dining cues: pergola beams and warm festoon lights.
-        val pergola = Color(0xFF29283A)
-        drawLine(pergola.copy(alpha = .72f), Offset(0f, size.height * .045f), Offset(size.width, size.height * .045f), strokeWidth = size.width * .012f)
-        repeat(5) { index ->
-            val x = size.width * index / 4f
-            drawLine(pergola.copy(alpha = .48f), Offset(x, 0f), Offset(x, size.height * .28f), strokeWidth = size.width * .006f)
-        }
-        drawLine(Color(0x88E9BD78), Offset(size.width * .04f, size.height * .18f), Offset(size.width * .96f, size.height * .18f), strokeWidth = 2f)
-        repeat(11) { index ->
-            val x = size.width * (.07f + index * .086f)
-            val y = size.height * (.18f + if (index % 2 == 0) .018f else 0f)
-            drawLine(Color(0x99E9BD78), Offset(x, size.height * .18f), Offset(x, y + 5f), strokeWidth = 1.5f)
-            drawCircle(Color(0xFFFFD88C).copy(alpha = .76f), radius = 3.3f, center = Offset(x, y + 8f))
-            drawCircle(Color(0x44FFD88C), radius = 9f, center = Offset(x, y + 8f))
-        }
         drawRect(color = Color(0xFF171927), topLeft = Offset(0f, baseline + size.height * .22f), size = Size(size.width, size.height * .14f))
         drawRect(color = Color(0xFF292536), topLeft = Offset(0f, baseline + size.height * .21f), size = Size(size.width, 8f))
-        // Terrace railing and low silhouettes of cocktail tables at the edges.
-        val terraceY = size.height * .79f
-        drawLine(Color(0x887D7182), Offset(0f, terraceY), Offset(size.width, terraceY), strokeWidth = 3f)
-        repeat(13) { index ->
-            val x = size.width * index / 12f
-            drawLine(Color(0x557D7182), Offset(x, terraceY), Offset(x, size.height * .9f), strokeWidth = 2f)
-        }
-        listOf(.1f, .9f).forEach { x ->
-            val cx = size.width * x
-            val cy = size.height * .87f
-            drawLine(Color(0x887A6559), Offset(cx, cy), Offset(cx, size.height * .98f), strokeWidth = 5f)
-            drawOval(Color(0xAA493B3A), topLeft = Offset(cx - size.width * .075f, cy - 7f), size = Size(size.width * .15f, 14f))
-            drawCircle(Color(0x88E9BD78), radius = 5f, center = Offset(cx, cy - 11f))
-        }
     }
 }
 
@@ -539,7 +510,7 @@ private fun GameScreen(
                     }
                     Spacer(Modifier.width(12.dp))
                     Column(Modifier.weight(1f)) {
-                        Text("${guest.name.toUpperCase()} · ${guest.table.toUpperCase()}", color = Gold, fontSize = 9.sp, fontWeight = FontWeight.ExtraBold, letterSpacing = 1.sp)
+                       Text("${guest.name.uppercase()} · ${guest.table.uppercase()}", color = Gold, fontSize = 9.sp, fontWeight = FontWeight.ExtraBold, letterSpacing = 1.sp)
                         Spacer(Modifier.height(4.dp))
                         Text("“Could I get a ${order.name}, please?”", color = Ink, fontSize = 16.sp, fontWeight = FontWeight.Bold, lineHeight = 21.sp)
                         Text(if (order.type == MenuType.Drink) "SIGNATURE DRINK" else "FROM THE KITCHEN", color = Muted, fontSize = 8.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.2.sp, modifier = Modifier.padding(top = 5.dp))
